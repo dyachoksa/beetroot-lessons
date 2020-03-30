@@ -1,0 +1,18 @@
+[33m
+    **********************************************
+    *    List of available commands:             *
+    *       'add':    To add new country,        *
+    *       'show':   To see full country list,  *
+    *       'update': To edit country you want,  *
+    *       'delete': To delete country,         *
+    *       'clear':  To clear the list,         *
+    *       'help':   To see this help list,     *
+    *       'quit':   To exit                    *
+    **********************************************
+    [0m
+[33mTip! Write 'help' to see all available commands.
+[0m
+What do you want? [31mCountry list is empty[0m
+[33mTip! Write 'help' to see all available commands.
+[0m
+What do you want? 

@@ -1,0 +1,10 @@
+{
+  "message": "Success",
+  "notes": [
+    {
+      "id": 1,
+      "note": "Welcome to my notebook!"
+    }
+  ],
+  "status": 200
+}
