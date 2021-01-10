@@ -4,6 +4,7 @@ menu = """
 What do you want to do?
 1 - Print list of contacts
 2 - Add new contact
+3 - Delete contact
 q - Exit from application
 """
 
@@ -20,8 +21,8 @@ def save_contacts():
 
 def print_list():
     print("\nYour contacts:")
-    for contact in contacts:
-        print(f"{contact['name']} / {contact['email']}")
+    for num, contact in enumerate(contacts, start=1):
+        print(f"{num}: {contact['name']} / {contact['email']}")
 
 
 def add_contact():
@@ -35,6 +36,15 @@ def add_contact():
     print("Contact was added successfully")
 
 
+def delete_contact():
+    print_list()
+    num_to_delete = int(input("Please enter number to delete: "))
+    del contacts[num_to_delete - 1]
+
+    save_contacts()
+    print("Contact was successfully removed")
+
+
 def main():
     print("Welcome to Contacts!")
 
@@ -46,6 +56,8 @@ def main():
             print_list()
         elif op == "2":
             add_contact()
+        elif op == "3":
+            delete_contact()
         elif op == "q":
             print("Goodbye!")
             return 0
