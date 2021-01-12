@@ -9,6 +9,10 @@
   },
   {
     "name": "Steven Lawson",
-    "email": "steven.lawson@example.com"
+    "email": "steven@example.com"
+  },
+  {
+    "name": "Jacks Nichols",
+    "email": "jacks.nichols@example.com"
   }
 ]

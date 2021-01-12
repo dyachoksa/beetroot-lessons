@@ -5,6 +5,8 @@ What do you want to do?
 1 - Print list of contacts
 2 - Add new contact
 3 - Delete contact
+e - Edit contact
+s - Search for a contact
 q - Exit from application
 """
 
@@ -36,6 +38,27 @@ def add_contact():
     print("Contact was added successfully")
 
 
+def edit_contact():
+    print("\nEdit a contact:")
+    print_list()
+    num_to_edit = int(input("Please enter number to edit: "))
+
+    for num, contact in enumerate(contacts, start=1):
+        if num == num_to_edit:
+            name = (input(f"Enter new name ({contact['name']}): ")).strip()
+            email = (input(f"Enter email ({contact['email']}): ")).strip()
+
+            updated_contact = {
+                "name": name if name else contact["name"],
+                "email": email if email else contact["email"],
+            }
+
+            contacts[num-1] = updated_contact
+
+            save_contacts()
+            print("Contact was updated successfully")
+
+
 def delete_contact():
     print_list()
     num_to_delete = int(input("Please enter number to delete: "))
@@ -43,6 +66,21 @@ def delete_contact():
 
     save_contacts()
     print("Contact was successfully removed")
+
+
+def search_contacts():
+    term = input("Name or email to search: ")
+
+    matches = 0
+    for contact in contacts:
+        if term.lower() in contact['name'].lower() or term.lower() in contact['email'].lower():
+            print(f"{contact['name']} / {contact['email']}")
+            matches += 1
+
+    if matches:
+        print("Found {} contact(s)".format(matches))
+    else:
+        print("No results found")
 
 
 def main():
@@ -58,6 +96,10 @@ def main():
             add_contact()
         elif op == "3":
             delete_contact()
+        elif op == "e":
+            edit_contact()
+        elif op == "s":
+            search_contacts()
         elif op == "q":
             print("Goodbye!")
             return 0
