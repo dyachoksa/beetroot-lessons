@@ -1,10 +1,9 @@
 import functools
 import time
 import uuid
-import threading
 import random
 import sys
-import concurrent.futures
+import multiprocessing
 
 
 def timer(func):
@@ -41,16 +40,11 @@ def process_job(job_id):
 
 @timer
 def main():
-    threads_num = 5
+    processes_num = 5
 
     jobs = [str(uuid.uuid4()) for _ in range(5)]
 
-    # Sequense
-    # for job_id in jobs:
-    #     process_job(job_id)
-
-    # Concurent
-    with concurrent.futures.ThreadPoolExecutor(max_workers=threads_num) as executor:
+    with multiprocessing.Pool(processes=processes_num) as executor:
         executor.map(process_job, jobs)
 
 
